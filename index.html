@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            font-size: 50px;
+            text-align: center;
+        }
+        h2{
+            font-size: 40px;
+            background-color: rgb(29, 188, 29);
+            text-align: center;
+            padding: 7px 0px;
+            width: 80px;
+            height: 60px;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            gap: 5%;
+        }
+        .operand{
+            display: flex;
+            align-items: center;
+        }
+        .operand button{
+            font-size: 50px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0px 20px;
+        }
+        .rotate {
+            transform: rotate(360deg);
+        }
+    
+
+        @media screen and (max-width: 530px){
+            h1{
+                font-size: 2rem;
+            }
+        }
+        @media screen and (max-width: 350px){
+            h1{
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>JavaScript Counter App</h1>
+        <div class="operand">
+            <button onclick="counter('-')">-</button>
+            <h2 id="display">0</h2>
+            <button onclick="counter('+')">+</button>
+        </div>
+        <button onclick="counter(this)" style= "border: none;cursor: pointer;transition: all 0.5s ease;"><i class="fa fa-2xl fa-refresh" aria-hidden="true"></i></button>
+    </div>
+</body>
+<script>
+    function counter(value){
+        var display = document.getElementById("display")
+        
+        if(value == "+"){
+            ++display.innerHTML
+            if(display.innerHTML > 0){
+                display.style.color = "aqua"
+            }else if(display.innerHTML == 0 ){
+                display.style.color = "white"
+            }
+        }else if(value == "-"){
+            --display.innerHTML
+            if(display.innerHTML < 0){
+                display.style.color = "red"
+            }else if(display.innerHTML == 0 ){
+                display.style.color = "white"
+            }
+        }else{
+            value.classList.toggle('rotate');
+            value.style.transition = 0
+            if(display.innerHTML > 0 || display.innerHTML < 0){
+                display.innerHTML = 0
+                display.style.color = "white"
+                
+            }
+        }
+    }
+</script>
+</html>
